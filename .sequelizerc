@@ -1,5 +1,3 @@
-import { config } from 'node:process';
-
 const { resolve } = require('node:path');
 
 module.exports = {
