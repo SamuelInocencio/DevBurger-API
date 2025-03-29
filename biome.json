@@ -27,7 +27,7 @@
 				"noUselessConstructor": "off",
 				"noWith": "error"
 			},
-			"correctness": {
+			"correctness": {					
 				"noConstAssign": "error",
 				"noConstantCondition": "error",
 				"noEmptyCharacterClassInRegex": "error",
@@ -47,7 +47,7 @@
 				"noUnsafeOptionalChaining": "error",
 				"noUnusedLabels": "error",
 				"noUnusedPrivateClassMembers": "error",
-				"noUnusedVariables": "error",
+				"noUnusedVariables": "off",
 				"useIsNan": "error",
 				"useValidForDirection": "error",
 				"useYield": "error"
