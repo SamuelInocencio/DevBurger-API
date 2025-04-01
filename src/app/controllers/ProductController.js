@@ -1,5 +1,7 @@
 import * as Yup from 'yup';
 
+import Product from '../models/Product';
+
 class ProductController {
   async store(request, response) {
     const schema = Yup.object({
@@ -7,6 +9,10 @@ class ProductController {
       price: Yup.number().required(),
       category: Yup.string().required(),
     });
+
+    const { filename } = request.file;
+
+    console.log(filename);
 
     try {
       schema.validateSync(request.body, { abortEarly: false });
