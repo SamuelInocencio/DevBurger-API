@@ -26,8 +26,7 @@ class ProductController {
       path,
     });
 
-    console.log(name, price, category);
-
+  
     return response.status(201).json(product);
   }
 
