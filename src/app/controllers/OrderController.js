@@ -41,7 +41,7 @@ class OrderController {
     });
 
     const formattedProducts = findProducts.map((product) => {
-const productIndex =  products.findIndex(item => item.id === product.id);
+      const productIndex = products.findIndex((item) => item.id === product.id);
 
       const newProduct = {
         id: product.id,
@@ -61,9 +61,12 @@ const productIndex =  products.findIndex(item => item.id === product.id);
         name: request.userName,
       },
       products: formattedProducts,
+      status: 'Pedido Realizado!',
     };
 
-    return response.status(201).json(order);
+    const createdOrder = await Order.create(order);
+
+    return response.status(201).json(createdOrder);
   }
 }
 
