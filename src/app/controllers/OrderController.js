@@ -2,6 +2,7 @@ import * as Yup from 'yup';
 
 import Order from '../schemas/Order';
 import Product from '../models/Product';
+import Category from '../models/Category';
 
 class OrderController {
   async store(request, response) {
@@ -30,6 +31,28 @@ class OrderController {
       where: {
         id: productsIds,
       },
+      include: [
+        {
+          model: Category,
+          as: 'category',
+          attributes: ['name'],
+        },
+      ],
+    });
+
+    const formattedProducts = findProducts.map((product) => {
+const productIndex =  products.findIndex(item => item.id === product.id);
+
+      const newProduct = {
+        id: product.id,
+        name: product.name,
+        category: product.category.name,
+        price: product.price,
+        url: product.url,
+        quantity: products[productIndex].quantity,
+      };
+
+      return newProduct;
     });
 
     const order = {
@@ -37,7 +60,7 @@ class OrderController {
         id: request.userId,
         name: request.userName,
       },
-      products: findProducts,
+      products: formattedProducts,
     };
 
     return response.status(201).json(order);
