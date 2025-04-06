@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
 
 import Category from '../models/Category';
+import User from '../models/User';
 
 class CategoryController {
   async store(request, response) {
@@ -14,23 +15,27 @@ class CategoryController {
       return response.status(400).json({ error: err.errors });
     }
 
-    const { name } = request.body;
+    const { admin: isAdmin } = User.findByPk(request.userId);
 
-    const categoryExists = await Category.findOne({
-      where: {
-        name,
-      },
-    });
+    console.log(`A variavel isAdmin tem o valor ${isAdmin} `);
 
-    if (categoryExists) {
-      return response.status(400).json({ error: 'Category already exists' });
-    }
+    // const { name } = request.body;
 
-    const { id } = await Category.create({
-      name,
-    });
+    // const categoryExists = await Category.findOne({
+    //   where: {
+    //     name,
+    //   },
+    // });
 
-    return response.status(201).json({ id, name });
+    // if (categoryExists) {
+    //   return response.status(400).json({ error: 'Category already exists' });
+    // }
+
+    // const { id } = await Category.create({
+    //   name,
+    // });
+
+    return response.status(201).json(isAdmin);
   }
 
   async index(request, response) {
