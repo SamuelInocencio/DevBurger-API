@@ -15,9 +15,9 @@ class CategoryController {
       return response.status(400).json({ error: err.errors });
     }
 
-    const { admin: isAdmin } = User.findByPk(request.userId);
+    const  isAdmin  = await User.findByPk(request.userId);
 
-    console.log(`A variavel isAdmin tem o valor ${isAdmin} `);
+        console.log(`A variavel isAdmin tem o valor ${isAdmin} `);
 
     // const { name } = request.body;
 
