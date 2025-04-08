@@ -16,8 +16,6 @@ function authMiddleware(request, response, next) {
         throw new Error();
       }
 
-      console.log(decoded);
-
       request.userId = decoded.id;
       request.userName = decoded.name;
     });
@@ -28,4 +26,3 @@ function authMiddleware(request, response, next) {
 }
 
 export default authMiddleware;
-

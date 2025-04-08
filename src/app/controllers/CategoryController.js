@@ -21,7 +21,7 @@ class CategoryController {
       return response.status(401).json();
     }
 
-    console.log(`A variavel isAdmin tem o valor ${isAdmin} `);
+    const { filename: path } = request.file;
 
     const { name } = request.body;
 
@@ -37,6 +37,7 @@ class CategoryController {
 
     const { id } = await Category.create({
       name,
+      path,
     });
 
     return response.status(201).json({ id, name });
