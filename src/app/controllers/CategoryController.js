@@ -23,6 +23,8 @@ class CategoryController {
 
     const { filename: path } = request.file;
 
+    console.log(path);
+
     const { name } = request.body;
 
     const categoryExists = await Category.findOne({
@@ -77,8 +79,6 @@ class CategoryController {
 
     const { name } = request.body;
 
-   
-
     if (name) {
       const categoryNameExists = await Category.findOne({
         where: {
@@ -102,8 +102,6 @@ class CategoryController {
         },
       },
     );
-
-    
 
     return response.status(200).json();
   }
