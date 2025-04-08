@@ -15,27 +15,31 @@ class CategoryController {
       return response.status(400).json({ error: err.errors });
     }
 
-    const  isAdmin  = await User.findByPk(request.userId);
+    const { admin: isAdmin } = await User.findByPk(request.userId);
 
-        console.log(`A variavel isAdmin tem o valor ${isAdmin} `);
+    if (!isAdmin) {
+      return response.status(401).json();
+    }
 
-    // const { name } = request.body;
+    console.log(`A variavel isAdmin tem o valor ${isAdmin} `);
 
-    // const categoryExists = await Category.findOne({
-    //   where: {
-    //     name,
-    //   },
-    // });
+    const { name } = request.body;
 
-    // if (categoryExists) {
-    //   return response.status(400).json({ error: 'Category already exists' });
-    // }
+    const categoryExists = await Category.findOne({
+      where: {
+        name,
+      },
+    });
 
-    // const { id } = await Category.create({
-    //   name,
-    // });
+    if (categoryExists) {
+      return response.status(400).json({ error: 'Category already exists' });
+    }
 
-    return response.status(201).json(isAdmin);
+    const { id } = await Category.create({
+      name,
+    });
+
+    return response.status(201).json({ id, name });
   }
 
   async index(request, response) {
