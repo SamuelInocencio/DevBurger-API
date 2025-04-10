@@ -128,7 +128,7 @@ API RESTful para gerenciamento de produtos, categorias, usuários e pedidos — 
 
 ## 🧑‍💻 Autor
 
-Feito com 💜 por [Seu Nome] — [@seuuser](https://github.com/seuuser)
+Feito com 💜 por Samuel Ferreira Inocêncio — SamuelInocencio (https://github.com/SamuelInocencio)
 
 ---
 
