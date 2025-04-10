@@ -43,7 +43,7 @@ API RESTful para gerenciamento de produtos, categorias, usuários e pedidos — 
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/devburger-api.git
+   git clone https://github.com/SamuelInocencio/DevBurger-API.git
    cd devburger-api
    ```
 
