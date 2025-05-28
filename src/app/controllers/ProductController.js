@@ -20,7 +20,7 @@ class ProductController {
     }
 
     const { admin: isAdmin } = await User.findByPk(request.userId);
-
+    
     if (!isAdmin) {
       return response.status(401).json();
     }
@@ -75,20 +75,22 @@ class ProductController {
       path = request.file.filename;
     }
 
-   
     const { name, price, category_id, offer } = request.body;
 
-    await Product.update({
-      name,
-      price,
-      category_id,
-      path,
-      offer,
-    }, {
-      where: {
-        id,
-      }
-    });
+    await Product.update(
+      {
+        name,
+        price,
+        category_id,
+        path,
+        offer,
+      },
+      {
+        where: {
+          id,
+        },
+      },
+    );
 
     return response.status(200).json();
   }

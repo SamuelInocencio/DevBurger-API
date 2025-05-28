@@ -30,11 +30,11 @@ module.exports = {
         default: false,
       },
       created_at: {
-        type: DATE,
+        type: Sequelize.DATE,
         allowNull: false,
       },
       updated_at: {
-        type: DATE,
+        type: Sequelize.DATE,
         allowNull: false,
       },
     });
