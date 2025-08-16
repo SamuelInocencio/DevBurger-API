@@ -8,8 +8,8 @@ const calculateOrderAmount = (items) => {
     const total = items.reduce((acc, current) => {
         return acc + current.price * current.quantity;
     }, 0);
-    // Converter para centavos e garantir que seja um inteiro
-    return Math.round(total * 100);
+   
+    return total;
 };
 
 
